@@ -63,3 +63,5 @@ Git and commands:
     Ctrl+Shift+P = command pallet.
         Rename branch
         New Branch
+
+#Change for Commit
