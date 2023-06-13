@@ -65,4 +65,4 @@ Git and commands:
         New Branch
         clone - Clone from github repos
 
-#Change for Commit
+Change for Commit - No Longer comment
