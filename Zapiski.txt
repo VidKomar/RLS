@@ -1,0 +1,64 @@
+# Comment; """ Multiline Comment """
+Variables int, float, str
+    Get type = type(var)
+    Začetek non-int, je case sensitive, ne keywords
+    camelCase is friend; OrPascalCase; sometimes_snake_case
+
+    en var vsaki value:
+        x, y = "x1", "y1"
+    en value večin var:
+        x = y = "x1"
+    Unpacking:
+        črke = ["x1", "y1"]
+        x, y = črke
+
+    Print("string", int)
+
+    Global = izven funkcije. Uporabla znotraj ali zunaj funk. Kliči wherever?
+    Local = Če definiraš znotraj fukcije. global x znotraj funk. jo naredi global.
+
+Data types
+	String
+		x = str("Vid")
+		Slicing x[1:2]; From start x[:2]; To end x[2:]; Reverse x[-2:-1]
+
+		Concatenate, combine, join: x + " " + y
+		Format - combine int, str...: x = "Vid, visok {1}, širok {2}, star {0}"
+			x.format(starost, višina, širina)     (num = idx seq. in format)
+		Escape char. \' = '; \\ = \; \n = newline; \t = tab...
+		
+		Different string methods LIST: https://www.w3schools.com/python/python_strings_methods.asp
+		eg.	Upper/lower case: x.upper() x.lower()
+			Remove blank at begining or end: x.strip()
+			Replace letter or string part: x.replace("d", "t") -> ["Vit"]
+			Split into substring: x.split("i") -> ["V", "d"]
+			
+    Numeric = int(2) poz. or neg.
+     float(2.0) poz. or neg.; exp = 1e5
+     complex(2j)
+    Sequences (zaporedja) =
+        list(("x", "y"))
+        tuple(("x", "y"))
+        range(3)
+    mapping = dict(name = "Vid", starost = 26)
+    set = set (("x", "y")), frozenset
+    Boolean = bool(1) -> True == 1 / false == 0
+		Nonempty string = True; Nonzero number == True
+		Empty (), [], {}, "", 0, None, False == False
+		Function return True; return False
+    Binary = bytes, bytearray, memoryview
+    None = NoneType
+	
+Operators! https://www.w3schools.com/python/python_operators.asp
+	Operatorji: + - * / %(ostanek pri deljenju) **(eksponent) //(celoštevilsko deljenje)
+	Assignment operator: x += 1 -> x = x+1 in drugi operatorji
+	Comparison: ==, !=, <>..., 
+	Logical: and, or, not
+	Identity -> Is same (with memory aloc): is, is not
+	Membership -> sequence in obj: in, not in
+	Bitwise: &(AND), |(OR), ^(XOR), ~(NOT), << Zero Fill left shift?, >>...
+
+
+Git and commands:
+    Ctrl+Shift+P = command pallet.
+        Rename branch
