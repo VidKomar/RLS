@@ -62,3 +62,4 @@ Operators! https://www.w3schools.com/python/python_operators.asp
 Git and commands:
     Ctrl+Shift+P = command pallet.
         Rename branch
+        New Branch
