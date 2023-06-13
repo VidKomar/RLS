@@ -63,5 +63,6 @@ Git and commands:
     Ctrl+Shift+P = command pallet.
         Rename branch
         New Branch
+        clone - Clone from github repos
 
 #Change for Commit
