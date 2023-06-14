@@ -32,5 +32,6 @@ window.show() # Like plt!
 #pushButton.show()
 
 app.exec_() # Starting the event loop
+
 # Creating window
 # Atleast one window -> App exit when last main window is closed!
