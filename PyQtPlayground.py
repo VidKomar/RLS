@@ -33,5 +33,6 @@ window.show() # Like plt!
 
 app.exec_() # Starting the event loop
 
+
 # Creating window
 # Atleast one window -> App exit when last main window is closed!
