@@ -10,7 +10,7 @@ class MainWindow(QMainWindow):
     def __init__(self, *args, **kwargs): 
         super(MainWindow, self).__init__(*args, **kwargs) # Every QT widgets requires super init!
         # When you subclass a Qt class you must always call the super __init__ function to allow Qt to set up the object.
-        
+
         self.setFixedSize(400, 300) # Limit the main window size
         self.setWindowTitle("Title line yay \o/") # Window title \o/
 
@@ -32,6 +32,5 @@ window.show() # Like plt!
 #pushButton.show()
 
 app.exec_() # Starting the event loop
-
 # Creating window
 # Atleast one window -> App exit when last main window is closed!
