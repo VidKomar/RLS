@@ -66,3 +66,6 @@ Git and commands:
         clone - Clone from github repos
 
 Change for Commit - No Longer comment
+
+QT Notes:
+Every QT holds one QApplication -> QApplication.exec_()
