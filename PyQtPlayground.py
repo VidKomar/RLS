@@ -1,7 +1,7 @@
 from PyQt5.QtGui import *
 #from PyQt5.QtWidgets import * # Boljša ideja da poimenuješ widg, ki jih rabiš -> QMainWindow ipd.
-from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QLabel
-from PyQt5.QtCore import QSize, Qt
+from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QLabel, QListView
+from PyQt5.QtCore import QSize, Qt, QStringListModel
 
 import sys # For command line args
 
@@ -19,6 +19,15 @@ class MainWindow(QMainWindow):
 
         pushButton = QPushButton("Press here to win!") # Is seperate window
         self.setCentralWidget(pushButton) # Set the widget, that goes in the middle of the window
+        pushButton.setFixedSize(100, 100)
+
+        ListModel = QStringListModel()
+        ListModel = setStringList(["Apple", "Banana", "ChimmiChanga"])
+
+        self.list_view = QListView()
+        self.list_view.setModel(ListModel)
+
+        
 
 
 
