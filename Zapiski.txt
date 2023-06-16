@@ -69,3 +69,74 @@ Change for Commit - No Longer comment
 
 QT Notes:
 Every QT holds one QApplication -> QApplication.exec_()
+
+XML parsing
+
+Testi
+pytest
+tests folder daš .py file. "test_" jih zazna plugin, znotrej funkcije "test_"
+Fixture -> da se pred kodo odtesta nekej zgodi
+    conftest.py so notri definirani
+    @pytest.Fixture
+    notri daš ime funkcije
+        framework_connections kot fixture, ki ga
+        test zazna kot input
+
+Poganjanje $pytest
+    verbose -s
+
+Kaj testirat. Test pa input da bo fail (funkcija rabi int, dobi str.)
+    Typing -> metoda ki točno specificira type kot parametre
+    npr. minimum_region_capacities: dict(tuple(float, float))
+    ne bo failal, če napačen tip, IDE pa pomaga.
+
+    Static typechecking != static code analysis = mypy
+    preveri če so vse spremenljivke tapravega typa. Povezave spremenljivk morjo bit iste
+    "assert"
+
+Precommit hook (googlej)
+.git/hooks/precommit.py
+Notri mu rečeš da požene flake8 (py skripta če pep-8). Install
+
+Testiranje MVC -> kjer business se vse definira. Class in Fun k bojo delale stvari;
+    test za to funkcijo (da more bit int, ne sme bit neg. etc.)
+    WebInterface dobi xml, format pretvoriš v interen format (class) in tega passaš Business logiki.
+    Če se kej spremeni na web, spremeniš samo del kode k dela scrapeanje
+
+Uporabi @dataclass. Za hitro definiranje classa in hranjenje podatkov znotraj.
+    Narediš class podatki, daš makro @dataclass.
+    sam doda __init__
+    Znotraj daš validatorje. float = attr.isv
+    Dataclass validation z attrs
+    ATTRS je kot dataclass s simpel validacijo
+
+Pipeline -> coverage report. Kolk kode se je med testom pognalo.
+    pytest-cov zgenerira coverage report
+
+Python logging
+    Logging, ne print!
+        strated initialization
+        fin -||-
+        etc.
+
+Exception handling 
+    try -> če koda faila se požene except
+    except. Povej katerega nej navrže. Lahko standardni
+    Happy flow -> teče kot more.
+    Unhappy flow -> nekej kar ni vredu. String, namesto int.
+        najboljš da raise exception.
+            attrs validatorji takoj raisal exception
+
+PyPI uploadanje
+Ko nardiš package, narediš pyproject.toml (is the new yaml)
+    info o package: Ime, decription, version py, author, modul...
+    Nujno za build package.
+    Buildaš "python -m build", najde pyproject.toml file in ga zbuilda.
+    tar.gz in .whl
+
+Publishing package -> twine PyPI. Utility za publishing na repository.
+python -m build potem pa twine upload -r ... komande, da uploada na repo.
+
+packageana koda != github repository.
+Repo/imeRepo/readme in setup py (namesto project toml)
+
