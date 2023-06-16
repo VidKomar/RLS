@@ -27,10 +27,7 @@ class MainWindow(QMainWindow):
         self.list_view = QListView()
         self.list_view.setModel(ListModel)
 
-        
-
-
-
+    
 app = QApplication(sys.argv) # For passing command line arguments into app. can be empty []
 # Python list containing the command line arguments passed to the application.
 # QApplication holds the event loop, so only one is required
