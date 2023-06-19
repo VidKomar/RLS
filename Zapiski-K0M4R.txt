@@ -1,0 +1,48 @@
+# Comment; """ Multiline Comment """
+Variables int, float, str
+    Get type = type(var)
+    Začetek non-int, je case sensitive, ne keywords
+    camelCase is friend; OrPascalCase; sometimes_snake_case
+
+    en var vsaki value:
+        x, y = "x1", "y1"
+    en value večin var:
+        x = y = "x1"
+    Unpacking:
+        črke = ["x1", "y1"]
+        x, y = črke
+
+    Print("string", int)
+
+    Global = izven funkcije. Uporabla znotraj ali zunaj funk. Kliči wherever?
+    Local = Če definiraš znotraj fukcije. global x znotraj funk. jo naredi global.
+
+Data types
+    Text = str("Hello")
+        "" or ''
+        Multiline strings x = """asd nova vrsica """
+        First letter of str: x[0] !!! Pazi IDX!!! TO NI MATLAB
+        Loop through string: for x in "Vid": print(x)
+        Sting length: len(x)
+        Check if in string: print("Vid" in x)
+            if "Vid" in x: doThis
+            if "Vid" not in x: doThat
+    Numeric
+        int(2) poz. or neg.
+        float(2.0) poz. or neg.; exp = 1e5
+        complex(2j)
+        Convert = CASTING with the use of int(), float(), str()...
+        random.randrange(1, 10)
+    Sequences (zaporedja) =
+        list(("x", "y"))
+        tuple(("x", "y"))
+        range(3)
+    mapping = dict(name = "Vid", starost = 26)
+    set = set (("x", "y")), frozenset
+    Boolean = bool(1)
+    Binary = bytes, bytearray, memoryview
+    None = NoneType
+
+Loops!
+for x in :
+    do this

@@ -1,0 +1,22 @@
+13.06.2023 @8:30
+Prisotni: 	Robert Sedevčič (Robert.Sedevcic@rls.si)
+David Kavrečič (David.Kavrecic@rls.si) 
+Vid Komar
+
+Delo v Pythonu
+
+Cilj python enostavno gui app.
+zbira in prikaže okoljske parametre, za različne slo mesta, ki so na voljo preko linka
+Povdarek še vse poleg razvoja:
+- repozitorj git hub (PERSONAL?)
+- Virtual environment python
+- unit testi
+- distribucija (wheel packagge) - PyPi repozitorij
+Github actions - CI na Github -> za vsak commit se poženejo testi in zato pipeline
+
+Kriterij:
+odzivnost -> ni 14 dni pred začetkom ampak KOMUNIKACIJA
+    Sprotna, resna KOMUNIKACIJA
+    samostojnost v zdravi meri. Oceni da ne gre preveč časa za debug
+
+14 dni-ish
