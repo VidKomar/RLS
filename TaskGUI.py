@@ -8,13 +8,13 @@ import MainTask
 
 def displaySelected(selected_infoIdx, data_dict):
         if selected_infoIdx == 0:
-            plt.plot(data_dict.get("tavg"))
+            plt.plot(data_dict.get("valid_UTC")[2:], data_dict.get("tavg"))
             plt.show()
         if selected_infoIdx == 1:
-            plt.plot(data_dict.get("tx"))
+            plt.plot(data_dict.get("valid_UTC")[2:], data_dict.get("tx"))
             plt.show()
         if selected_infoIdx == 2:
-            plt.plot(data_dict.get("tn"))
+            plt.plot(data_dict.get("valid_UTC"), data_dict.get("tn"))
             plt.show()
         else:
             plt.plot() # Empty
@@ -74,9 +74,7 @@ class MainW(QWidget):
 
         return selected_infoIdx, data_dict
 
-    
 
-#displaySelected(selected_info, data_dict)
 
 if __name__ == "__main__":
 

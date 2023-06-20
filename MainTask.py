@@ -30,6 +30,13 @@ def pullData(url):
                 else:
                     data_dict[tag] = [value]
                 
+                # Two days worth of data is required...
+                #timeOfData = []
+                #timeOfData = timeOfData.append(str(data_dict["valid_UTC"[11:15]]))
+                #timeTemp = data_dict["valid_UTC"]
+                #timeOfData = timeOfData.append(str(timeTemp[11:15]))
+
+
                 #if len(data_dict["tavg"]) >= entries: # Limiting entries for testing
                 #    break
                 if element == ("</data>"): # When end is reached, break
