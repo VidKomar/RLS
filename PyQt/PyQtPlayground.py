@@ -14,8 +14,7 @@ class MainWindow(QMainWindow):
         self.setFixedSize(400, 300) # Limit the main window size
         self.setWindowTitle("Title line yay \o/") # Window title \o/
 
-        label = QLabel("Centered label") # Qlabel -> simple widget
-        label.setAlignment(Qt.AlignTop) # In the TOP centre!!
+        
 
         pushButton = QPushButton("Press here to win!") # Is seperate window
         self.setCentralWidget(pushButton) # Set the widget, that goes in the middle of the window

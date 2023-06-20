@@ -15,20 +15,32 @@ if response.status_code == 200: # Check if the request was successful
     root = ET.fromstring(response.content) # Parse the XML content
 
     # Extract temperature data from the XML
-    temperatures = []
+    data_dict = {}
     entries = 10
-    for element in root.iter('tavg'):
-        temperatures.append(float(element.text))
-        #if len(temperatures) >= entries: # Limiting entries for testing
-        #    break
-        if root.iter("/data"):
-            break
-    
-    
-        print(temperatures)
+    for element in root.iter():
+        if element.tag in ["tavg", "tx", "tn"]: # Finding temperature markers
+            tag = element.tag # Parse tags and values from XML
+            value = element.text
+
+            if tag in data_dict:
+                data_dict[tag].append(value) # Add value to tag
+            else:
+                data_dict[tag] = [value]
+
+            #if len(data_dict["tavg"]) >= entries: # Limiting entries for testing
+            #    break
+            if element == ("</data>"): # When end is reached, break
+                break
+            #return data_dict
 
     # Create the graph using matplotlib
-    plt.plot(temperatures)
+    # 3 different temperatures
+    plt.subplot(3, 1, 1)
+    plt.plot(data_dict.get("tavg"))
+    plt.subplot(3, 1, 2)
+    plt.plot(data_dict.get("tx"))
+    plt.subplot(3, 1, 3)
+    plt.plot(data_dict.get("tn"))
     plt.xlabel('Time')
     plt.ylabel('Temperature (°C)')
     plt.title('Temperature Variation')

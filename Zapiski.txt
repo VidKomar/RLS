@@ -94,6 +94,9 @@ Kaj testirat. Test pa input da bo fail (funkcija rabi int, dobi str.)
     preveri če so vse spremenljivke tapravega typa. Povezave spremenljivk morjo bit iste
     "assert"
 
+Git 
+    Visualisation: git log --graph --full-history --all --pretty=format:"%h%x09%d%x20%s"
+
 Precommit hook (googlej)
 .git/hooks/precommit.py
 Notri mu rečeš da požene flake8 (py skripta če pep-8). Install
