@@ -96,6 +96,15 @@ Kaj testirat. Test pa input da bo fail (funkcija rabi int, dobi str.)
 
 Git 
     Visualisation: git log --graph --full-history --all --pretty=format:"%h%x09%d%x20%s"
+    git log --oneline --decorate --graph
+    git log # Get current log
+    git comit
+    git branch
+    git checkout
+    git status
+    git stash branch <new branchname> # Creating a Branch from a Stash
+    git stash # See what is stashed
+    git stash apply # Stashed item applied
 
 Precommit hook (googlej)
 .git/hooks/precommit.py
