@@ -6,16 +6,30 @@ import matplotlib.pyplot as plt
 import sys
 import MainTask
 
+def SimplePlot (data_dict, selectedQuantity):
+    """
+    Used for plotting temperatures ATM.
+    Data is gathered from dicts.
+    """
+    temperaturesPlot = [float(x) for x in data_dict.get(selectedQuantity)] 
+    timePlot = data_dict.get("valid_UTC")[2:]
+    #tempPlot = plt.plot(timePlot, temperaturesPlot)
+    fig, ax = plt.subplots()
+    ax.plot(timePlot, temperaturesPlot) 
+    ax.set_ylabel("Temperature [°C]")
+    ax.set_xlabel("Time")
+    ax.set_title("Displaying {} in two day span".format(selectedQuantity))
+
+    plt.show()
+
+
 def displaySelected(selected_infoIdx, data_dict):
         if selected_infoIdx == 0:
-            plt.plot(data_dict.get("valid_UTC")[2:], data_dict.get("tavg"))
-            plt.show()
+            SimplePlot(data_dict, "tavg")
         if selected_infoIdx == 1:
-            plt.plot(data_dict.get("valid_UTC")[2:], data_dict.get("tx"))
-            plt.show()
+            SimplePlot(data_dict, "tx")
         if selected_infoIdx == 2:
-            plt.plot(data_dict.get("valid_UTC"), data_dict.get("tn"))
-            plt.show()
+            SimplePlot(data_dict, "tn")
         else:
             plt.plot() # Empty
             plt.show
@@ -65,6 +79,7 @@ class MainW(QWidget):
         """
         displayChoice = self.sender().parent().findChild(QComboBox)
         selected_infoIdx = displayChoice.currentIndex()
+        #selected_info = displayChoice.currentText()
         print(selected_infoIdx)
 
         # Pull data from website using MainTask function

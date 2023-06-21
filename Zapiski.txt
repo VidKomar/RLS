@@ -100,7 +100,10 @@ Git
     git log # Get current log
     git comit
     git branch
-    git checkout
+        branch -d hotfix # Delete branch
+    git checkout <branch> #
+    git merge <branch> # Merge branch with HEAD file
+        first checkout to main, then merge <branch>
     git status
     git stash branch <new branchname> # Creating a Branch from a Stash
     git stash # See what is stashed
