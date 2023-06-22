@@ -1,19 +1,21 @@
-from PyQt5.QtWidgets import (QApplication, QMainWindow, QPushButton, QLabel, QListView,
-                             QComboBox, QWidget, QVBoxLayout, QMessageBox)
+from PyQt5.QtWidgets import (QApplication, QMainWindow, QPushButton, QLabel,
+                              QListView, QComboBox, QWidget, QVBoxLayout, QMessageBox)
 
 from PyQt5.QtCore import QSize, Qt, QStringListModel
 import matplotlib.pyplot as plt
 import sys
 import MainTask
 
-def SimplePlot (data_dict, selectedQuantity):
+
+def SimplePlot(data_dict, selectedQuantity):
+
     """
     Used for plotting temperatures ATM.
     Data is gathered from dicts.
     """
     temperaturesPlot = [float(x) for x in data_dict.get(selectedQuantity)] 
     timePlot = data_dict.get("valid_UTC")[2:]
-    #tempPlot = plt.plot(timePlot, temperaturesPlot)
+    # tempPlot = plt.plot(timePlot, temperaturesPlot)
     fig, ax = plt.subplots()
     ax.plot(timePlot, temperaturesPlot) 
     ax.set_ylabel("Temperature [°C]")
@@ -24,15 +26,15 @@ def SimplePlot (data_dict, selectedQuantity):
 
 
 def displaySelected(selected_infoIdx, data_dict):
-        if selected_infoIdx == 0:
-            SimplePlot(data_dict, "tavg")
-        if selected_infoIdx == 1:
-            SimplePlot(data_dict, "tx")
-        if selected_infoIdx == 2:
-            SimplePlot(data_dict, "tn")
-        else:
-            plt.plot() # Empty
-            plt.show
+    if selected_infoIdx == 0:
+        SimplePlot(data_dict, "tavg")
+    if selected_infoIdx == 1:
+        SimplePlot(data_dict, "tx")
+    if selected_infoIdx == 2:
+        SimplePlot(data_dict, "tn")
+    else:
+        plt.plot()  # Empty
+        plt.show
         
 
 class MainW(QWidget):
@@ -50,8 +52,8 @@ class MainW(QWidget):
         label = QLabel("Welcome to my weather app \n"
                        "Please choose information you are interested in!")
         label.setAlignment(Qt.AlignCenter)
-        layout.addWidget(label) 
-        
+        layout.addWidget(label)
+
         # Choose the desired display output
         displayChoice = QComboBox()
         displayChoice.addItem("Average temperature")
@@ -63,7 +65,6 @@ class MainW(QWidget):
         buttonConfirm = QPushButton("Confirm Choice")
         buttonConfirm.clicked.connect(self.buttonConfirm)
         layout.addWidget(buttonConfirm)
-
 
         self.setLayout(layout)     
 
@@ -79,7 +80,7 @@ class MainW(QWidget):
         """
         displayChoice = self.sender().parent().findChild(QComboBox)
         selected_infoIdx = displayChoice.currentIndex()
-        #selected_info = displayChoice.currentText()
+        # selected_info = displayChoice.currentText()
         print(selected_infoIdx)
 
         # Pull data from website using MainTask function
@@ -88,7 +89,6 @@ class MainW(QWidget):
         displaySelected(selected_infoIdx, data_dict)
 
         return selected_infoIdx, data_dict
-
 
 
 if __name__ == "__main__":

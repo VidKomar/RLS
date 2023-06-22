@@ -82,6 +82,16 @@ Fixture -> da se pred kodo odtesta nekej zgodi
         framework_connections kot fixture, ki ga
         test zazna kot input
 
+    
+    Arrange, or set up, the conditions for the test
+    Act by calling some function or method
+    !!Assert!! that some end condition is true
+
+    . == pass
+    F == fail
+    E == unexpected exception
+
+
 Poganjanje $pytest
     verbose -s
 
