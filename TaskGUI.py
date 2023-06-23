@@ -93,6 +93,6 @@ class MainW(QWidget):
 
 if __name__ == "__main__":
 
-    app = QApplication([]) # No parameters used, as of yet
+    app = QApplication([])  # No parameters used, as of yet
     ex = MainW()
-    sys.exit(app.exec()) # Starting the event loop. exec_ is archaic.
+    sys.exit(app.exec())  # Starting the event loop. exec_ is archaic.

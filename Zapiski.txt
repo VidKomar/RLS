@@ -75,14 +75,25 @@ XML parsing
 Testi
 pytest
 tests folder daš .py file. "test_" jih zazna plugin, znotrej funkcije "test_"
-Fixture -> da se pred kodo odtesta nekej zgodi
+Fixture -> fixtures are functions that can create data, test doubles,
+    or initialize system state for the test suite. explicit dependency declarations!
+    da se pred kodo odtesta nekej zgodi. 
     conftest.py so notri definirani
     @pytest.Fixture
+    def example_fixture():
+        return 1
+
+    def test_with_fixture(example_fixture):
+        assert example_fixture == 1
+
     notri daš ime funkcije
         framework_connections kot fixture, ki ga
         test zazna kot input
+    !they aren’t always as good for tests that require
+    slight variations in the data.
+    Littering your test suite with fixtures is no better
+    than littering it with plain data or objects
 
-    
     Arrange, or set up, the conditions for the test
     Act by calling some function or method
     !!Assert!! that some end condition is true
@@ -90,6 +101,8 @@ Fixture -> da se pred kodo odtesta nekej zgodi
     . == pass
     F == fail
     E == unexpected exception
+
+    
 
 
 Poganjanje $pytest
