@@ -3,14 +3,14 @@ from PyQt5.QtWidgets import (QApplication, QMainWindow, QPushButton, QLabel,
 
 from PyQt5.QtCore import QSize, Qt, QStringListModel
 import matplotlib.pyplot as plt
-import sys
+import sys, logging
 import MainTask
 
 
 def SimplePlot(data_dict, selectedQuantity):
 
     """
-    Used for plotting temperatures ATM.
+    Used for plotting weather variables.
     Data is gathered from dicts.
     """
     temperaturesPlot = [float(x) for x in data_dict.get(selectedQuantity)]
@@ -18,7 +18,7 @@ def SimplePlot(data_dict, selectedQuantity):
     # tempPlot = plt.plot(timePlot, temperaturesPlot)
     fig, ax = plt.subplots(figsize=(15, 8))
     ax.plot(timePlot, temperaturesPlot) 
-    ax.set_ylabel("Temperature [°C]")
+    ax.set_ylabel("Temperature [°C]")  # !!!
     ax.set_xlabel("Time")
     fig.autofmt_xdate(rotation=45)
 
@@ -31,9 +31,13 @@ def SimplePlot(data_dict, selectedQuantity):
 
 def displaySelected(selected_infoIdx, data_dict):
     # Instead of all the if, plot by dict. keys!
-    #SimplePlot(data_dict, selected_infoIdx)
+    logging.info("TestLog")
+    logging.info(data_dict.keys())
 
-    if selected_infoIdx == 0:
+    # Plotting selected information
+    SimplePlot(data_dict, list(data_dict.keys())[selected_infoIdx+1])
+
+    """  if selected_infoIdx == 0:
         SimplePlot(data_dict, "tavg")
     if selected_infoIdx == 1:
         SimplePlot(data_dict, "tx")
@@ -53,8 +57,8 @@ def displaySelected(selected_infoIdx, data_dict):
         SimplePlot(data_dict, "lwavg")
     else:
         plt.plot()  # Empty
-        plt.show
-        
+        plt.show"""
+       
 
 class MainW(QWidget):
     def __init__(self):
