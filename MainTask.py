@@ -1,16 +1,12 @@
 import requests
 import xml.etree.ElementTree as ET
-import matplotlib.pyplot as plt
-from PyQt5.QtWidgets import QApplication
-import sys
-
 
 # Send a GET request to the XML file URL
 url = 'http://agromet.mkgp.gov.si/APP2/AgrometContent/xml/55.xml'
 
 # TEMPS tavg = avg temp.; tx = max temp; tn = min temp.
 # HUMIDITY rhavg, rhx, rhn
-#  
+# 
 
 
 def pullData(url):
@@ -20,15 +16,17 @@ def pullData(url):
 
         # Extract temperature data from the XML
         data_dict = {}
-        # entries = 10
         for element in root.iter():
-            # if element.tag in ["tavg"]: # Test purpose - only show one temp.
-            if element.tag in ["valid_UTC", "tavg", "tx", "tn"]:  # Finding temperature markers
+            # Finding temperature, humidity,
+            # rainfall, dew point temp., Leaf Wetness markers
+            if element.tag in ["valid_UTC", "tavg", "tx", "tn",
+                                "rhavg", "rhx", "rhn", 
+                                "td", "rr", "lwavg"]:  
                 tag = element.tag  # Parse tags and values from XML
                 value = element.text
 
                 if tag in data_dict:
-                    data_dict[tag].append(value)  # Add value to tag
+                    data_dict[tag].insert(0, value)  # Add value to tag
                 else:
                     data_dict[tag] = [value]
                 
