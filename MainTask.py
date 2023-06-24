@@ -1,5 +1,7 @@
 import requests
 import xml.etree.ElementTree as ET
+from bs4 import BeautifulSoup
+import re
 
 # Send a GET request to the XML file URL
 url = 'http://agromet.mkgp.gov.si/APP2/AgrometContent/xml/55.xml'
@@ -50,3 +52,25 @@ def pullData(url):
     else:
         print(f'Request failed with status code: {response.status_code}')
 
+
+def getCitiesData():
+    """
+    # URL http://agromet.mkgp.gov.si/APP2/sl/Home/Index?id=2&archive=0&graphs=1#esri_map_iframe
+    """
+    # URL of the webpage
+    url = "http://agromet.mkgp.gov.si/APP2/sl/Home/Index?id=2&archive=0&graphs=1#esri_map_iframe"
+
+    response = requests.get(url)
+    # Parse the webpage content using BeautifulSoup
+    soup = BeautifulSoup(response.content, "html.parser") 
+
+    # Find all anchor tags (links) in the webpage
+    links = soup.find_all("a")
+
+    # Collect all links that end with ".xml"
+    xml_files = []
+    for link in links:
+        if link.has_attr("href") and link["href"].endswith(".xml"):
+            xml_files.append("http://agromet.mkgp.gov.si" + link["href"])
+    #logging.info(xml_files)
+    #print(xml_files)
