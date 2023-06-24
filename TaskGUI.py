@@ -29,13 +29,13 @@ def SimplePlot(data_dict, selectedQuantity):
     plt.show()
 
 
-def displaySelected(selected_infoIdx, data_dict):
+def displaySelected(selected_info, data_dict):
     # Instead of all the if, plot by dict. keys!
     logging.info("TestLog")
     logging.info(data_dict.keys())
 
     # Plotting selected information
-    SimplePlot(data_dict, list(data_dict.keys())[selected_infoIdx+1])
+    # SimplePlot(data_dict, list(data_dict.keys())[selected_info+1])
 
     """  if selected_infoIdx == 0:
         SimplePlot(data_dict, "tavg")
@@ -108,16 +108,16 @@ class MainW(QWidget):
             data_dict - Pulled information from the source webpage xml file.
         """
         displayChoice = self.sender().parent().findChild(QComboBox)
-        selected_infoIdx = displayChoice.currentIndex()
-        # selected_info = displayChoice.currentText()
-        print(selected_infoIdx)
+        # selected_infoIdx = displayChoice.currentIndex()
+        selected_info = displayChoice.currentText()
+        #print(selected_infoIdx)
 
         # Pull data from website using MainTask function
         data_dict = MainTask.pullData("http://agromet.mkgp.gov.si/APP2/AgrometContent/xml/55.xml")
 
-        displaySelected(selected_infoIdx, data_dict)
+        displaySelected(selected_info, data_dict)
 
-        return selected_infoIdx, data_dict
+        return selected_info, data_dict
 
 
 if __name__ == "__main__":
