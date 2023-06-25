@@ -1,9 +1,0 @@
-README.md
-setup.py
-RLS/TaskGUI.py
-RLS/TaskMain.py
-RLS_Task.egg-info/PKG-INFO
-RLS_Task.egg-info/SOURCES.txt
-RLS_Task.egg-info/dependency_links.txt
-RLS_Task.egg-info/top_level.txt
-tests/test_General.py
