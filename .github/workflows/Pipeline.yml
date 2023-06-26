@@ -32,13 +32,11 @@ jobs:
           python setup.py sdist
 
       - name: Publish package
+        env:
+          TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
+          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
         run: |
           source venv/bin/activate
           pip install twine
-          twine upload --repository-url https://test.pypi.org/legacy/ dist/*
-
-      - name: Send status email
-        run: |
-          source venv/bin/activate
-          pip install sendgrid
-          python send_email.py
+          twine upload --repository-url https://upload.pypi.org/legacy/ dist/*
+          

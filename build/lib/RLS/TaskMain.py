@@ -1,6 +1,7 @@
 import requests
 import xml.etree.ElementTree as ET
 from bs4 import BeautifulSoup
+import re
 
 # Send a GET request to the XML file URL
 url = 'http://agromet.mkgp.gov.si/APP2/AgrometContent/xml/55.xml'
