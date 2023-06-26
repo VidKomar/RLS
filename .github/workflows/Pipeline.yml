@@ -38,7 +38,7 @@ jobs:
         run: |
           source venv/bin/activate
           pip install twine
-          twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+          twine upload --repository-url https://upload.pypi.org/legacy/ dist/*
 
       - name: Send status email
         run: |
