@@ -1,4 +1,4 @@
-#http://agromet.mkgp.gov.si/APP2/sl/Home/Index?id=2&archive=0&graphs=1#esri_map_iframe
+# http://agromet.mkgp.gov.si/APP2/sl/Home/Index?id=2&archive=0&graphs=1#esri_map_iframe
 import sys
 from PyQt5.QtCore import QUrl
 from PyQt5.QtNetwork import QNetworkAccessManager, QNetworkRequest
@@ -10,7 +10,9 @@ app = QApplication(sys.argv)
 manager = QNetworkAccessManager()
 
 # Define the URL
-url = QUrl("http://agromet.mkgp.gov.si/APP2/sl/Home/Index?id=2&archive=0&graphs=1&xml=1")
+url = QUrl(
+    "http://agromet.mkgp.gov.si/APP2/sl/Home/Index?id=2&archive=0&graphs=1&xml=1"
+)
 
 # Create a QNetworkRequest object and set the URL
 request = QNetworkRequest(url)
@@ -29,6 +31,7 @@ def handle_reply():
         print(xml_content)
     else:
         print("Request failed with error:", reply.errorString())
+
 
 # Connect the finished signal of the reply to the handle_reply function
 reply.finished.connect(handle_reply)

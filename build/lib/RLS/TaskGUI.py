@@ -1,5 +1,14 @@
-from PyQt5.QtWidgets import (QApplication, QMainWindow, QPushButton, QLabel,
-                              QListView, QComboBox, QWidget, QVBoxLayout, QMessageBox)
+from PyQt5.QtWidgets import (
+    QApplication,
+    QMainWindow,
+    QPushButton,
+    QLabel,
+    QListView,
+    QComboBox,
+    QWidget,
+    QVBoxLayout,
+    QMessageBox,
+)
 
 from PyQt5.QtCore import QSize, Qt, QStringListModel
 import matplotlib.pyplot as plt
@@ -17,13 +26,13 @@ def SimplePlot(data_dict, selectedQuantity):
     timePlot = data_dict.get("valid_UTC")[2:]  # Solve this issue pls
     # tempPlot = plt.plot(timePlot, temperaturesPlot)
     fig, ax = plt.subplots(figsize=(15, 8))
-    ax.plot(timePlot, temperaturesPlot) 
+    ax.plot(timePlot, temperaturesPlot)
     ax.set_ylabel("Temperature [°C]")  # !!!
     ax.set_xlabel("Time")
     fig.autofmt_xdate(rotation=45)
 
     # Showing every other label
-    plt.setp(ax.get_xticklabels()[::2], visible=False)  
+    plt.setp(ax.get_xticklabels()[::2], visible=False)
     ax.set_title("Displaying {} in two day span".format(selectedQuantity))
 
     plt.show()
@@ -35,7 +44,7 @@ def displaySelected(selected_infoIdx, data_dict):
     logging.info(data_dict.keys())
 
     # Plotting selected information
-    SimplePlot(data_dict, list(data_dict.keys())[selected_infoIdx+1])
+    SimplePlot(data_dict, list(data_dict.keys())[selected_infoIdx + 1])
 
     """  if selected_infoIdx == 0:
         SimplePlot(data_dict, "tavg")
@@ -58,7 +67,7 @@ def displaySelected(selected_infoIdx, data_dict):
     else:
         plt.plot()  # Empty
         plt.show"""
-       
+
 
 class MainW(QWidget):
     def __init__(self):
@@ -72,8 +81,10 @@ class MainW(QWidget):
         self.setWindowTitle("Weather app.")
 
         # Greeting and instructions on top
-        label = QLabel("Welcome to my weather app \n"
-                       "Please choose information you are interested in!")
+        label = QLabel(
+            "Welcome to my weather app \n"
+            "Please choose information you are interested in!"
+        )
         label.setAlignment(Qt.AlignCenter)
         layout.addWidget(label)
 
@@ -95,7 +106,7 @@ class MainW(QWidget):
         buttonConfirm.clicked.connect(self.buttonConfirm)
         layout.addWidget(buttonConfirm)
 
-        self.setLayout(layout)     
+        self.setLayout(layout)
 
         self.show()
 
@@ -103,19 +114,21 @@ class MainW(QWidget):
         """
         Upon button conformation, pull data.
         Model and View are seperated.
-        return: 
+        return:
             selected_info - Which information, the user wishes to see.
             data_dict - Pulled information from the source webpage xml file.
         """
         displayChoice = self.sender().parent().findChild(QComboBox)
         selected_infoIdx = displayChoice.currentIndex()
         selected_info = displayChoice.currentText()
-        #print(selected_infoIdx)
+        # print(selected_infoIdx)
 
         TaskMain.getCitiesData()
 
         # Pull data from website using TaskMain function
-        data_dict = TaskMain.pullData("http://agromet.mkgp.gov.si/APP2/AgrometContent/xml/55.xml")
+        data_dict = TaskMain.pullData(
+            "http://agromet.mkgp.gov.si/APP2/AgrometContent/xml/55.xml"
+        )
 
         displaySelected(selected_infoIdx, data_dict)
 

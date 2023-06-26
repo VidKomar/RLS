@@ -1,6 +1,6 @@
 13.06.2023 @8:30
 Prisotni: 	Robert Sedevčič (Robert.Sedevcic@rls.si)
-David Kavrečič (David.Kavrecic@rls.si) 
+David Kavrečič (David.Kavrecic@rls.si)
 Vid Komar
 
 Delo v Pythonu

@@ -11,6 +11,14 @@ None of this is learned during formal education, so learning it on the job is a 
 
 There are a lot of things I could have done better, loops that could work faster, GUI that could look better, testing that could be more thorough. But juggling work, after work activities and solo learning of the described requirements is incredibly difficult.
 
+## Usage
+
+To use, run the TaskGUI and wait for the main window to open. You are greeted with a simple window, where you **select the data** you wish to see and then click the button **"Confirm choice"**. This will open a window with the selected data.
+
+If you wish to see other data, just close the window with the plot, choose a different dataset you are curious about, and press **"Confirm choice"** again.
+
+When you are finished with the program, manually close the window.
+
 
 ## Authors
 
@@ -39,4 +47,3 @@ Everything learned will help me on my career path, wherever it will take me.
 
  - [Project menthor Robert Sedevcic (LinkedIn)](https://www.linkedin.com/in/robert-sedevcic-6482289/)
  - [Friends and family](https://youtu.be/0AIlz08fZos)
-

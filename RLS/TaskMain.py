@@ -3,11 +3,11 @@ import xml.etree.ElementTree as ET
 from bs4 import BeautifulSoup
 
 # Send a GET request to the XML file URL
-url = 'http://agromet.mkgp.gov.si/APP2/AgrometContent/xml/55.xml'
+url = "http://agromet.mkgp.gov.si/APP2/AgrometContent/xml/55.xml"
 
 # TEMPS tavg = avg temp.; tx = max temp; tn = min temp.
 # HUMIDITY rhavg, rhx, rhn
-# 
+#
 
 
 def pullData(url):
@@ -20,9 +20,18 @@ def pullData(url):
         for element in root.iter():
             # Finding temperature, humidity,
             # rainfall, dew point temp., Leaf Wetness markers
-            if element.tag in ["valid_UTC", "tavg", "tx", "tn",
-                                "rhavg", "rhx", "rhn", 
-                                "td", "rr", "lwavg"]:  
+            if element.tag in [
+                "valid_UTC",
+                "tavg",
+                "tx",
+                "tn",
+                "rhavg",
+                "rhx",
+                "rhn",
+                "td",
+                "rr",
+                "lwavg",
+            ]:
                 tag = element.tag  # Parse tags and values from XML
                 value = element.text
 
@@ -30,7 +39,7 @@ def pullData(url):
                     data_dict[tag].insert(0, value)  # Add value to tag
                 else:
                     data_dict[tag] = [value]
-                
+
                 # Two days worth of data is required...
                 # timeOfData = []
                 # timeOfData = timeOfData.append(str(data_dict["valid_UTC"[11:15]]))
@@ -43,13 +52,12 @@ def pullData(url):
                     break
         return data_dict
 
-
         # Start the PyQt5 event loop
         # app = QApplication([])
         # app.exec_()
         # sys.exit(app.exec())
     else:
-        print(f'Request failed with status code: {response.status_code}')
+        print(f"Request failed with status code: {response.status_code}")
 
 
 def getCitiesData():
@@ -61,7 +69,7 @@ def getCitiesData():
 
     response = requests.get(url)
     # Parse the webpage content using BeautifulSoup
-    soup = BeautifulSoup(response.content, "html.parser") 
+    soup = BeautifulSoup(response.content, "html.parser")
 
     # Find all anchor tags (links) in the webpage
     links = soup.find_all("a")
@@ -71,5 +79,5 @@ def getCitiesData():
     for link in links:
         if link.has_attr("href") and link["href"].endswith(".xml"):
             xml_files.append("http://agromet.mkgp.gov.si" + link["href"])
-    #logging.info(xml_files)
-    #print(xml_files)
+    # logging.info(xml_files)
+    # print(xml_files)

@@ -39,4 +39,3 @@ jobs:
           source venv/bin/activate
           pip install twine
           twine upload --repository-url https://upload.pypi.org/legacy/ dist/*
-          

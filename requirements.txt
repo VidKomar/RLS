@@ -1,4 +1,5 @@
-numpy
 matplotlib
+numpy
+pre-commit
 pyqt5
 pytest

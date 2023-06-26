@@ -43,13 +43,35 @@
 
 from fbs_runtime.application_context.PyQt5 import ApplicationContext
 from PyQt5.QtCore import QDateTime, Qt, QTimer
-from PyQt5.QtWidgets import (QApplication, QCheckBox, QComboBox, QDateTimeEdit,
-        QDial, QDialog, QGridLayout, QGroupBox, QHBoxLayout, QLabel, QLineEdit,
-        QProgressBar, QPushButton, QRadioButton, QScrollBar, QSizePolicy,
-        QSlider, QSpinBox, QStyleFactory, QTableWidget, QTabWidget, QTextEdit,
-        QVBoxLayout, QWidget)
+from PyQt5.QtWidgets import (
+    QApplication,
+    QCheckBox,
+    QComboBox,
+    QDateTimeEdit,
+    QDial,
+    QDialog,
+    QGridLayout,
+    QGroupBox,
+    QHBoxLayout,
+    QLabel,
+    QLineEdit,
+    QProgressBar,
+    QPushButton,
+    QRadioButton,
+    QScrollBar,
+    QSizePolicy,
+    QSlider,
+    QSpinBox,
+    QStyleFactory,
+    QTableWidget,
+    QTabWidget,
+    QTextEdit,
+    QVBoxLayout,
+    QWidget,
+)
 
 import sys
+
 
 class WidgetGallery(QDialog):
     def __init__(self, parent=None):
@@ -102,14 +124,14 @@ class WidgetGallery(QDialog):
         self.setLayout(mainLayout)
 
         self.setWindowTitle("Styles")
-        self.changeStyle('Windows')
+        self.changeStyle("Windows")
 
     def changeStyle(self, styleName):
         QApplication.setStyle(QStyleFactory.create(styleName))
         self.changePalette()
 
     def changePalette(self):
-        if (self.useStylePaletteCheckBox.isChecked()):
+        if self.useStylePaletteCheckBox.isChecked():
             QApplication.setPalette(QApplication.style().standardPalette())
         else:
             QApplication.setPalette(self.originalPalette)
@@ -137,7 +159,7 @@ class WidgetGallery(QDialog):
         layout.addWidget(radioButton3)
         layout.addWidget(checkBox)
         layout.addStretch(1)
-        self.topLeftGroupBox.setLayout(layout)    
+        self.topLeftGroupBox.setLayout(layout)
 
     def createTopRightGroupBox(self):
         self.topRightGroupBox = QGroupBox("Group 2")
@@ -161,8 +183,9 @@ class WidgetGallery(QDialog):
 
     def createBottomLeftTabWidget(self):
         self.bottomLeftTabWidget = QTabWidget()
-        self.bottomLeftTabWidget.setSizePolicy(QSizePolicy.Preferred,
-                QSizePolicy.Ignored)
+        self.bottomLeftTabWidget.setSizePolicy(
+            QSizePolicy.Preferred, QSizePolicy.Ignored
+        )
 
         tab1 = QWidget()
         tableWidget = QTableWidget(10, 10)
@@ -175,12 +198,14 @@ class WidgetGallery(QDialog):
         tab2 = QWidget()
         textEdit = QTextEdit()
 
-        textEdit.setPlainText("Twinkle, twinkle, little star,\n"
-                              "How I wonder what you are.\n" 
-                              "Up above the world so high,\n"
-                              "Like a diamond in the sky.\n"
-                              "Twinkle, twinkle, little star,\n" 
-                              "How I wonder what you are!\n")
+        textEdit.setPlainText(
+            "Twinkle, twinkle, little star,\n"
+            "How I wonder what you are.\n"
+            "Up above the world so high,\n"
+            "Like a diamond in the sky.\n"
+            "Twinkle, twinkle, little star,\n"
+            "How I wonder what you are!\n"
+        )
 
         tab2hbox = QHBoxLayout()
         tab2hbox.setContentsMargins(5, 5, 5, 5)
@@ -195,7 +220,7 @@ class WidgetGallery(QDialog):
         self.bottomRightGroupBox.setCheckable(True)
         self.bottomRightGroupBox.setChecked(True)
 
-        lineEdit = QLineEdit('s3cRe7')
+        lineEdit = QLineEdit("s3cRe7")
         lineEdit.setEchoMode(QLineEdit.Password)
 
         spinBox = QSpinBox(self.bottomRightGroupBox)
@@ -234,7 +259,7 @@ class WidgetGallery(QDialog):
         timer.start(1000)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     appctxt = ApplicationContext()
     gallery = WidgetGallery()
     gallery.show()
