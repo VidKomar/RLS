@@ -2,6 +2,7 @@ import unittest
 from unittest.mock import patch
 from TaskMain import getCitiesData
 
+
 class GetCitiesDataTestCase(unittest.TestCase):
     @patch('TaskMain.requests.get')
     @patch('TaskMain.BeautifulSoup')
@@ -23,6 +24,7 @@ class GetCitiesDataTestCase(unittest.TestCase):
             "http://agromet.mkgp.gov.si/test.xml",
             "http://agromet.mkgp.gov.si/test2.xml"
         ])
+
 
 if __name__ == '__main__':
     unittest.main()
