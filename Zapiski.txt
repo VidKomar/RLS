@@ -70,6 +70,18 @@ Change for Commit - No Longer comment
 QT Notes:
 Every QT holds one QApplication -> QApplication.exec_()
 
+Obligatory files - Package struct
+    requirements.txt
+    setup.py / pyproject.toml
+    README
+    folder -> packageName ("RLS") znotraj VSO kodo
+
+venv activate scripts
+pip install e .
+python buildpython setup.py sdist
+
+Out cd ..
+
 XML parsing
 
 Testi
