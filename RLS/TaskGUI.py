@@ -27,7 +27,7 @@ def SimplePlot(data_dict, selectedQuantity):
     # tempPlot = plt.plot(timePlot, temperaturesPlot)
     fig, ax = plt.subplots(figsize=(15, 8))
     ax.plot(timePlot, temperaturesPlot)
-    ax.set_ylabel("Temperature [°C]")  # !!!
+    ax.set_ylabel("Applicable unit")  # !!!
     ax.set_xlabel("Time")
     fig.autofmt_xdate(rotation=45)
 
@@ -44,7 +44,7 @@ def displaySelected(selected_infoIdx, data_dict):
     logging.info(data_dict.keys())
 
     # Plotting selected information
-    SimplePlot(data_dict, list(data_dict.keys())[selected_infoIdx + 1])
+    SimplePlot(data_dict, list(data_dict.keys())[selected_infoIdx + 2])
 
     """  if selected_infoIdx == 0:
         SimplePlot(data_dict, "tavg")
@@ -127,7 +127,15 @@ class MainW(QWidget):
         selected_info = displayChoice.currentText()
         # print(selected_infoIdx)
 
-        TaskMain.getCitiesData()
+        xml_locations = TaskMain.getCitiesData()
+
+        # Selecting from all cities to show data for selection only!
+        # DATA = {}
+        # for i, location in enumerate(xml_locations, start=1):
+        # singleCity = TaskMain.pullData(xml_locations[i])
+        # DATA.update(singleCity)
+
+        # print("Selected city is: {}".format(selectedLocation))
 
         # Pull data from website using TaskMain function
         data_dict = TaskMain.pullData(
@@ -139,7 +147,8 @@ class MainW(QWidget):
         return selected_infoIdx, data_dict
 
 
-# def physicalEntity()
+# def physicalEntity():
+
 
 if __name__ == "__main__":
 

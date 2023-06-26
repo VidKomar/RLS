@@ -2,6 +2,8 @@ import unittest
 from unittest.mock import patch
 from TaskMain import getCitiesData
 
+# Tests do not find the TaskMain and function contained inside
+
 
 class GetCitiesDataTestCase(unittest.TestCase):
     @patch("TaskMain.requests.get")

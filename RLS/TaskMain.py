@@ -31,6 +31,7 @@ def pullData(url):
                 "td",
                 "rr",
                 "lwavg",
+                "domain_shortTitle",
             ]:
                 tag = element.tag  # Parse tags and values from XML
                 value = element.text
@@ -81,3 +82,5 @@ def getCitiesData():
             xml_files.append("http://agromet.mkgp.gov.si" + link["href"])
     # logging.info(xml_files)
     # print(xml_files)
+
+    return xml_files
