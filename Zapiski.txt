@@ -26,13 +26,13 @@ Data types
 		Format - combine int, str...: x = "Vid, visok {1}, širok {2}, star {0}"
 			x.format(starost, višina, širina)     (num = idx seq. in format)
 		Escape char. \' = '; \\ = \; \n = newline; \t = tab...
-		
+
 		Different string methods LIST: https://www.w3schools.com/python/python_strings_methods.asp
 		eg.	Upper/lower case: x.upper() x.lower()
 			Remove blank at begining or end: x.strip()
 			Replace letter or string part: x.replace("d", "t") -> ["Vit"]
 			Split into substring: x.split("i") -> ["V", "d"]
-			
+
     Numeric = int(2) poz. or neg.
      float(2.0) poz. or neg.; exp = 1e5
      complex(2j)
@@ -48,11 +48,11 @@ Data types
 		Function return True; return False
     Binary = bytes, bytearray, memoryview
     None = NoneType
-	
+
 Operators! https://www.w3schools.com/python/python_operators.asp
 	Operatorji: + - * / %(ostanek pri deljenju) **(eksponent) //(celoštevilsko deljenje)
 	Assignment operator: x += 1 -> x = x+1 in drugi operatorji
-	Comparison: ==, !=, <>..., 
+	Comparison: ==, !=, <>...,
 	Logical: and, or, not
 	Identity -> Is same (with memory aloc): is, is not
 	Membership -> sequence in obj: in, not in
@@ -62,7 +62,7 @@ Operators! https://www.w3schools.com/python/python_operators.asp
 Git and commands:
     Ctrl+Shift+P = command pallet.
         Rename branch
-        New Branch
+        Create Branch
         clone - Clone from github repos
 
 Change for Commit - No Longer comment
@@ -77,7 +77,7 @@ pytest
 tests folder daš .py file. "test_" jih zazna plugin, znotrej funkcije "test_"
 Fixture -> fixtures are functions that can create data, test doubles,
     or initialize system state for the test suite. explicit dependency declarations!
-    da se pred kodo odtesta nekej zgodi. 
+    da se pred kodo odtesta nekej zgodi.
     conftest.py so notri definirani
     @pytest.Fixture
     def example_fixture():
@@ -102,7 +102,7 @@ Fixture -> fixtures are functions that can create data, test doubles,
     F == fail
     E == unexpected exception
 
-    
+
 
 
 Poganjanje $pytest
@@ -117,7 +117,7 @@ Kaj testirat. Test pa input da bo fail (funkcija rabi int, dobi str.)
     preveri če so vse spremenljivke tapravega typa. Povezave spremenljivk morjo bit iste
     "assert"
 
-Git 
+Git
     Visualisation: git log --graph --full-history --all --pretty=format:"%h%x09%d%x20%s"
     git log --oneline --decorate --graph
     git log # Get current log
@@ -157,7 +157,7 @@ Python logging
         fin -||-
         etc.
 
-Exception handling 
+Exception handling
     try -> če koda faila se požene except
     except. Povej katerega nej navrže. Lahko standardni
     Happy flow -> teče kot more.
@@ -177,4 +177,3 @@ python -m build potem pa twine upload -r ... komande, da uploada na repo.
 
 packageana koda != github repository.
 Repo/imeRepo/readme in setup py (namesto project toml)
-

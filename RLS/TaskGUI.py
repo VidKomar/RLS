@@ -16,7 +16,7 @@ import sys, logging
 import TaskMain
 
 
-def SimplePlot(data_dict, selectedQuantity):
+def SimplePlot(data_dict, selectedQuantity, location):
 
     """
     Used for plotting weather variables.
@@ -33,18 +33,21 @@ def SimplePlot(data_dict, selectedQuantity):
 
     # Showing every other label
     plt.setp(ax.get_xticklabels()[::2], visible=False)
-    ax.set_title("Displaying {} in two day span".format(selectedQuantity))
+    ax.set_title(
+        "Displaying {} in two day span @ {}".format(selectedQuantity, location)
+    )
 
     plt.show()
 
 
-def displaySelected(selected_infoIdx, data_dict):
+def displaySelected(selected_infoIdx, data_dict, location):
     # Instead of all the if, plot by dict. keys!
     logging.info("TestLog")
     logging.info(data_dict.keys())
 
     # Plotting selected information
-    SimplePlot(data_dict, list(data_dict.keys())[selected_infoIdx + 2])
+    # Needs rethinking
+    SimplePlot(data_dict, list(data_dict.keys())[selected_infoIdx + 2], location)
 
     """  if selected_infoIdx == 0:
         SimplePlot(data_dict, "tavg")
@@ -89,21 +92,24 @@ class MainW(QWidget):
         layout.addWidget(label)
 
         # Choose the desired location
-        displayChoice = QComboBox()
-        displayChoice.addItem("xml.files")
+        self.displayLocation = QComboBox()
+        listOfCities = TaskMain.pullSpecificData("domain_shortTitle")
+        for i in listOfCities:
+            self.displayLocation.addItem(i)
+        layout.addWidget(self.displayLocation)
 
         # Choose the desired display output
-        displayChoice = QComboBox()
-        displayChoice.addItem("Average temperature")
-        displayChoice.addItem("Maximum temperature")
-        displayChoice.addItem("Minimum temperature")
-        displayChoice.addItem("Average relative humidity")
-        displayChoice.addItem("Maximum relative humidity")
-        displayChoice.addItem("Minimum relative humidity")
-        displayChoice.addItem("Dew point temperature")
-        displayChoice.addItem("Rainfall")
-        displayChoice.addItem("Leaf Wetness")
-        layout.addWidget(displayChoice)
+        self.displayChoice = QComboBox()
+        self.displayChoice.addItem("Average temperature")
+        self.displayChoice.addItem("Maximum temperature")
+        self.displayChoice.addItem("Minimum temperature")
+        self.displayChoice.addItem("Average relative humidity")
+        self.displayChoice.addItem("Maximum relative humidity")
+        self.displayChoice.addItem("Minimum relative humidity")
+        self.displayChoice.addItem("Dew point temperature")
+        self.displayChoice.addItem("Rainfall")
+        self.displayChoice.addItem("Leaf Wetness")
+        layout.addWidget(self.displayChoice)
 
         # Confirm choice of display output
         buttonConfirm = QPushButton("Confirm Choice")
@@ -122,18 +128,20 @@ class MainW(QWidget):
             selected_info - Which information, the user wishes to see.
             data_dict - Pulled information from the source webpage xml file.
         """
-        displayChoice = self.sender().parent().findChild(QComboBox)
-        selected_infoIdx = displayChoice.currentIndex()
-        selected_info = displayChoice.currentText()
+        # Residual code for future reference
+        # displayChoice = self.sender().parent().findChild(QComboBox)
+        # displayChoice.currentText() To get combobx text
+        # displayChoice.currentIndex() To get combobx text idx
         # print(selected_infoIdx)
 
-        xml_locations = TaskMain.getCitiesData()
+        selectedlocation = self.displayLocation.currentText()
+        selectedlocationIdx = self.displayLocation.currentIndex()
+        selectedChoice = self.displayChoice.currentText()
+
+        # xml_locations = TaskMain.getCitiesData()
 
         # Selecting from all cities to show data for selection only!
-        # DATA = {}
-        # for i, location in enumerate(xml_locations, start=1):
-        # singleCity = TaskMain.pullData(xml_locations[i])
-        # DATA.update(singleCity)
+        DATA = {}
 
         # print("Selected city is: {}".format(selectedLocation))
 
@@ -142,9 +150,9 @@ class MainW(QWidget):
             "http://agromet.mkgp.gov.si/APP2/AgrometContent/xml/55.xml"
         )
 
-        displaySelected(selected_infoIdx, data_dict)
+        displaySelected(selectedlocationIdx, data_dict, selectedlocation)
 
-        return selected_infoIdx, data_dict
+        # return selected_infoIdx, data_dict
 
 
 # def physicalEntity():
