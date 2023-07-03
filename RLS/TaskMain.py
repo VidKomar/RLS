@@ -104,6 +104,7 @@ def pullSpecificData(requestedData):
     allCitiesXML = getCitiesData()
     dataList = []
 
+    # Gets the names of the cities from all the xmls on webpage
     for cityXML in allCitiesXML:
         # tree = ET.parse(cityXML)
         # root = tree.getroot()
@@ -119,7 +120,7 @@ def pullSpecificData(requestedData):
         # else:
         #    print(f"Request failed with status code: {response.status_code}")
 
-    return dataList
+    return dataList, allCitiesXML
 
     """response = requests.get(url)
     if response.status_code == 200:  # Check if the request was successful

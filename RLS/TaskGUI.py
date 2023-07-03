@@ -12,8 +12,13 @@ from PyQt5.QtWidgets import (
 
 from PyQt5.QtCore import QSize, Qt, QStringListModel
 import matplotlib.pyplot as plt
+import logging
 import sys, logging
 import TaskMain
+
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
+)
 
 
 def SimplePlot(data_dict, selectedQuantity, location):
@@ -42,8 +47,9 @@ def SimplePlot(data_dict, selectedQuantity, location):
 
 def displaySelected(selected_infoIdx, data_dict, location):
     # Instead of all the if, plot by dict. keys!
-    logging.info("TestLog")
+    # logging.info("TestLog")
     logging.info(data_dict.keys())
+    # logging.info(data_dict.values())
 
     # Plotting selected information
     # Needs rethinking
@@ -138,7 +144,10 @@ class MainW(QWidget):
         selectedlocationIdx = self.displayLocation.currentIndex()
         selectedChoice = self.displayChoice.currentText()
 
-        # xml_locations = TaskMain.getCitiesData()
+        logging.info("Selected location {}".format(selectedlocation))
+
+        xml_locations = TaskMain.getCitiesData()
+        logging.info("{}".format(xml_locations))
 
         # Selecting from all cities to show data for selection only!
         DATA = {}
